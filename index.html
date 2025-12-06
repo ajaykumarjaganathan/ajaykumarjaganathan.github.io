@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajay Kumar | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-container">
+    <div class="logo">AJAY<span>.</span></div>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero fade-in">
+    <div class="container hero-content">
+      <div>
+        <p class="hero-tag">AI & Data Science • Web Dev • IoT</p>
+        <h1>Hi, I'm <span>Ajay Kumar</span></h1>
+        <p class="hero-subtitle">
+          I build data-driven applications, backend systems in PHP, and smart IoT/robotics projects.
+        </p>
+        <div class="hero-buttons">
+          <a href="projects.html" class="btn primary">View My Projects</a>
+          <a href="contact.html" class="btn ghost">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <!-- Replace with your photo if you want -->
+        <div class="avatar-placeholder">Your Photo</div>
+        <p class="hero-card-text">
+          B.Tech – Artificial Intelligence & Data Science<br>
+          Focus: ML, Web Development, Data Warehousing, IoT.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlight Section -->
+  <section class="section fade-in">
+    <div class="container">
+      <h2 class="section-title">What I Do</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>AI & Data Science</h3>
+          <p>Build ML models, data pipelines, and dashboards. Experience with churn prediction, ETL, OLAP, and data warehousing concepts.</p>
+        </div>
+
+        <div class="card">
+          <h3>Web Development</h3>
+          <p>Develop full-stack apps using PHP, MySQL, HTML, CSS, JS, admin dashboards, hotel booking systems, and authentication flows.</p>
+        </div>
+
+        <div class="card">
+          <h3>IoT & Robotics</h3>
+          <p>Work with Raspberry Pi, ESP32, smart rover robots, and face recognition or ID-card based attendance systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="section fade-in">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid-2">
+        <div class="project-highlight card">
+          <h3>Telecom Customer Churn Prediction</h3>
+          <p>Streamlit app using XGBoost to predict customer churn for a telecom operator. Includes data preprocessing, model training, and interactive UI.</p>
+          <a href="projects.html" class="link">View details →</a>
+        </div>
+
+        <div class="project-highlight card">
+          <h3>Smart Rover Robot</h3>
+          <p>Raspberry Pi + ESP32 based smart rover capable of face recognition / ID-card attendance integration, suitable for smart campus automation.</p>
+          <a href="projects.html" class="link">View details →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <p>© <span id="year"></span> Ajay Kumar. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
