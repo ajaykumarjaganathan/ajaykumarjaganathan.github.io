@@ -1,27 +1,83 @@
-<form
-  class="card contact-form"
-  action="mailto:ajaykumarjaganathan@gmail.com?subject=Portfolio Enquiry"
-  method="post"
-  enctype="text/plain"
->
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input id="name" name="Name" type="text" required placeholder="Your name">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | Ajay Kumar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-container">
+    <div class="logo">AJAY<span>.</span></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
   </div>
+</header>
 
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input id="email" name="Email" type="email" required placeholder="your@email.com">
+<main>
+  <section class="section fade-in">
+    <div class="container">
+      <h1 class="section-title">Contact</h1>
+      <p class="section-subtitle">
+        Feel free to reach out for collaborations, internships, or project ideas.
+      </p>
+
+      <div class="grid-2 contact-layout">
+        <div class="card">
+          <h2>Get in Touch</h2>
+          <p><strong>Email:</strong> ajaykumarjaganathan@gmail.com</p>
+          <p><strong>LinkedIn:</strong> www.linkedin.com/in/ajaykumar-j</p>
+          <p><strong>Location:</strong> India</p>
+          <p>
+            I'm open to opportunities in AI, web development, and IoT/robotics.
+          </p>
+        </div>
+
+        <!-- MAILTO FORM (GITHUB PAGES SAFE) -->
+        <form
+          class="card contact-form"
+          action="mailto:ajaykumarjaganathan@gmail.com?subject=Portfolio Enquiry"
+          method="get"
+          enctype="text/plain"
+        >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" name="Name" type="text" required placeholder="Your name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="Email" type="email" required placeholder="your@email.com">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" rows="4" required placeholder="How can I help?"></textarea>
+          </div>
+
+          <button type="submit" class="btn primary">Send Message</button>
+
+          <p style="font-size:12px;color:gray;margin-top:10px;">
+            Your mail app will open to send this message.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <p>© <span id="year"></span> Ajay Kumar. All rights reserved.</p>
   </div>
+</footer>
 
-  <div class="form-group">
-    <label for="message">Message</label>
-    <textarea id="message" name="Message" rows="4" required placeholder="How can I help?"></textarea>
-  </div>
-
-  <button type="submit" class="btn primary">Send Message</button>
-
-  <p style="font-size:12px;color:gray;margin-top:10px;">
-    Your default mail app will open to send this message.
-  </p>
-</form>
+<script src="script.js"></script>
+</body>
+</html>
