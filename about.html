@@ -30,27 +30,31 @@
     .fact-key { color: var(--text-3); font-family: var(--ff-mono); font-size: 0.72rem; min-width: 120px; }
     .fact-val { color: var(--text); text-align: right; }
 
-    /* Right column */
+    /* Right column — smaller profile image */
     .profile-big {
       position: relative; border-radius: var(--r-lg); overflow: hidden;
       border: 1px solid var(--border); background: var(--surface);
+      max-width: 260px;
+      margin: 0 auto;
     }
     .profile-big img {
       width: 100%; aspect-ratio: 3/4;
       object-fit: cover; object-position: center top;
       filter: grayscale(15%) contrast(1.05);
+      display: block;
     }
     .profile-big-overlay {
       position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 2rem; background: linear-gradient(transparent, rgba(6,10,14,0.95));
+      padding: 1.25rem 1.5rem;
+      background: linear-gradient(transparent, rgba(6,10,14,0.95));
     }
-    .profile-big-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; }
-    .profile-big-role { font-family: var(--ff-mono); font-size: 0.72rem; color: var(--cyan); margin-top: 0.25rem; }
-    .profile-corner { position: absolute; width: 18px; height: 18px; border-color: var(--cyan); border-style: solid; }
-    .profile-corner.tl { top:10px;left:10px; border-width:2px 0 0 2px; }
-    .profile-corner.tr { top:10px;right:10px; border-width:2px 2px 0 0; }
-    .profile-corner.bl { bottom:10px;left:10px; border-width:0 0 2px 2px; }
-    .profile-corner.br { bottom:10px;right:10px; border-width:0 2px 2px 0; }
+    .profile-big-name { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.03em; }
+    .profile-big-role { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--cyan); margin-top: 0.2rem; }
+    .profile-corner { position: absolute; width: 14px; height: 14px; border-color: var(--cyan); border-style: solid; }
+    .profile-corner.tl { top:8px;left:8px; border-width:2px 0 0 2px; }
+    .profile-corner.tr { top:8px;right:8px; border-width:2px 2px 0 0; }
+    .profile-corner.bl { bottom:8px;left:8px; border-width:0 0 2px 2px; }
+    .profile-corner.br { bottom:8px;right:8px; border-width:0 2px 2px 0; }
 
     /* Timeline */
     .tl-section { padding: 5rem 0; }
@@ -73,7 +77,7 @@
 
     @media(max-width:900px){
       .about-grid{grid-template-columns:1fr;gap:3rem;}
-      .profile-big{max-width:360px;margin:0 auto;}
+      .profile-big{max-width:220px;}
     }
   </style>
 </head>
@@ -95,7 +99,6 @@
       <a href="projects.html" class="nav-link">Projects</a>
       <a href="contact.html" class="nav-link">Contact</a>
     </div>
-    <div class="nav-badge"><div class="nav-badge-dot"></div>Open to work</div>
   </div>
 </nav>
 
