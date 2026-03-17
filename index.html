@@ -7,7 +7,6 @@
   <meta name="description" content="Ajay Kumar — AI, Data Science, Web Dev & IoT Engineer">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ---- HERO PAGE ---- */
     .hero {
       min-height: calc(100vh - 68px);
       display: flex; align-items: center;
@@ -57,24 +56,25 @@
     .hstat-num { font-size: 2rem; font-weight: 900; line-height: 1; color: var(--cyan); letter-spacing: -0.04em; }
     .hstat-label { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 0.25rem; }
 
-    /* RIGHT — card with circle photo */
+    /* RIGHT — horizontal card: photo left, info right */
     .hero-right { display: flex; flex-direction: column; }
     .hero-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-lg); padding: 2.5rem 2rem;
-      display: flex; flex-direction: column; align-items: center; text-align: center;
+      border-radius: var(--r-lg); padding: 2rem;
+      display: flex; flex-direction: row;
+      align-items: center; gap: 1.5rem;
       box-shadow: 0 20px 60px rgba(0,0,0,0.35);
       transition: border-color var(--t), box-shadow var(--t);
     }
     .hero-card:hover { border-color: var(--border-md); box-shadow: 0 24px 80px rgba(0,220,255,0.08); }
 
-    /* Circle profile — smaller like reference */
+    /* Circle photo */
     .profile-circle {
-      width: 120px; height: 120px;
+      width: 110px; height: 110px; flex-shrink: 0;
       border-radius: 50%; overflow: hidden;
       border: 3px solid var(--border-md);
       box-shadow: 0 0 0 5px var(--cyan-dim), 0 8px 28px rgba(0,0,0,0.4);
-      margin-bottom: 1.5rem; position: relative; flex-shrink: 0;
+      position: relative;
     }
     .profile-circle img {
       width: 100%; height: 100%;
@@ -88,13 +88,16 @@
     }
     @keyframes scanD { 0%{top:0;opacity:.6;} 50%{opacity:.2;} 100%{top:100%;opacity:.6;} }
 
-    .hero-card-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-    .hero-card-info { font-size: 0.82rem; color: var(--text-2); line-height: 1.65; margin-bottom: 1.5rem; }
+    /* Info beside photo */
+    .hero-card-info { display: flex; flex-direction: column; gap: 0.4rem; text-align: left; }
+    .hero-card-name { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+    .hero-card-degree { font-size: 0.78rem; color: var(--text-2); line-height: 1.6; }
     .hero-card-status {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--ff-mono); font-size: 0.68rem; color: var(--green);
-      background: rgba(0,255,170,0.08); padding: 0.35rem 0.9rem;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--ff-mono); font-size: 0.65rem; color: var(--green);
+      background: rgba(0,255,170,0.08); padding: 0.28rem 0.75rem;
       border-radius: 999px; border: 1px solid rgba(0,255,170,0.2);
+      margin-top: 0.35rem; width: fit-content;
     }
     .sdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pb 2s infinite; }
     @keyframes pb { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
@@ -139,7 +142,7 @@
 
     @media (max-width:900px) {
       .hero-grid { grid-template-columns:1fr; gap:3rem; }
-      .hero-right { order:-1; max-width:320px; margin:0 auto; }
+      .hero-right { order:-1; max-width:360px; margin:0 auto; }
       .wid-grid { grid-template-columns:1fr; }
       .hero-stats { gap:1.5rem; }
     }
@@ -153,7 +156,6 @@
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">AJAY<span>.</span></a>
@@ -206,21 +208,23 @@
         </div>
       </div>
 
-      <!-- RIGHT — circle photo card -->
+      <!-- RIGHT — horizontal card -->
       <div class="hero-right">
         <div class="hero-card">
           <div class="profile-circle">
             <img src="profile.jpg" alt="Ajay Kumar">
             <div class="profile-scan"></div>
           </div>
-          <div class="hero-card-name">Ajay Kumar</div>
           <div class="hero-card-info">
-            B.Tech – Artificial Intelligence &amp; Data Science<br>
-            Focus: ML, Web Development, Data Warehousing, IoT.
-          </div>
-          <div class="hero-card-status">
-            <div class="sdot"></div>
-            Open to work
+            <div class="hero-card-name">Ajay Kumar</div>
+            <div class="hero-card-degree">
+              B.Tech – AI &amp; Data Science<br>
+              Focus: AI&ML, Web Dev, IoT.
+            </div>
+            <div class="hero-card-status">
+              <div class="sdot"></div>
+              Open to work
+            </div>
           </div>
         </div>
       </div>
@@ -290,7 +294,6 @@
 
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-logo">AJAY<span>.</span></div>
@@ -311,7 +314,7 @@
 
 <script src="script.js"></script>
 <script>
-const words = ['AI & ML Engineer','Full Stack Developer','IoT Builder','Data Scientist','Problem Solver'];
+const words = ['AI & ML Engineer','Frontend Developer','IoT Builder','Data Analysist','Problem Solver'];
 let wi=0,ci=0,del=false;
 const tw=document.getElementById('tw');
 function type(){
