@@ -12,74 +12,89 @@
       display: flex; align-items: center;
       position: relative; overflow: hidden;
     }
-    .hero-grid {
+
+    /* Full width hero — name on left, card floats right */
+    .hero-inner {
+      width: 100%;
       display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 5rem; align-items: center;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      align-items: end;
     }
 
     /* LEFT */
     .hero-eyebrow {
       font-family: var(--ff-mono); font-size: 0.72rem;
       color: var(--cyan); letter-spacing: 4px; text-transform: uppercase;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
       display: flex; align-items: center; gap: 0.75rem;
     }
     .hero-eyebrow::before { content:''; width: 32px; height: 1px; background: var(--cyan); }
+
     .hero-name {
-      font-size: clamp(4rem, 9vw, 7.5rem);
-      font-weight: 900; line-height: 0.92;
-      letter-spacing: -0.05em; margin-bottom: 1.5rem;
+      font-size: clamp(5rem, 11vw, 9rem);
+      font-weight: 900; line-height: 0.9;
+      letter-spacing: -0.05em; margin-bottom: 2rem;
     }
     .hero-name .line { display: block; overflow: hidden; }
     .hero-name .line span { display: block; animation: lineUp 0.9s cubic-bezier(0.4,0,0.2,1) both; }
-    .hero-name .line:nth-child(2) span { animation-delay: 0.12s; }
-    @keyframes lineUp { from{transform:translateY(100%);opacity:0;} to{transform:translateY(0);opacity:1;} }
-    .hero-name .accent { color: var(--cyan); }
+    .hero-name .line:nth-child(2) span { animation-delay: 0.12s; color: var(--cyan); }
+    @keyframes lineUp { from{transform:translateY(110%);opacity:0;} to{transform:translateY(0);opacity:1;} }
+
     .hero-role {
       font-family: var(--ff-mono); font-size: 1rem;
-      color: var(--text-2); margin-bottom: 2rem;
+      color: var(--text-2); margin-bottom: 1.75rem;
       display: flex; align-items: center; gap: 0.5rem;
     }
     .hero-role-prefix { color: var(--text-3); }
     .tw-cursor { color: var(--cyan); animation: blink2 1s step-end infinite; }
     @keyframes blink2 { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
     .hero-desc {
-      font-size: 1.05rem; color: var(--text-2);
-      line-height: 1.75; max-width: 540px; margin-bottom: 2.5rem;
+      font-size: 1rem; color: var(--text-2);
+      line-height: 1.75; max-width: 560px; margin-bottom: 2.5rem;
     }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
     .hero-stats {
       display: flex; gap: 2.5rem;
       padding-top: 2.5rem; border-top: 1px solid var(--border);
     }
-    .hstat-num { font-size: 2rem; font-weight: 900; line-height: 1; color: var(--cyan); letter-spacing: -0.04em; }
-    .hstat-label { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 0.25rem; }
+    .hstat-num { font-size: 2rem; font-weight: 900; color: var(--cyan); letter-spacing: -0.04em; }
+    .hstat-label { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 0.2rem; }
 
-    /* RIGHT — horizontal card: photo left, info right */
-    .hero-right { display: flex; flex-direction: column; }
-    .hero-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-lg); padding: 2rem;
-      display: flex; flex-direction: row;
-      align-items: center; gap: 1.5rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      transition: border-color var(--t), box-shadow var(--t);
+    /* RIGHT — card floats to the right, aligned to bottom of name */
+    .hero-right {
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 2rem;
     }
-    .hero-card:hover { border-color: var(--border-md); box-shadow: 0 24px 80px rgba(0,220,255,0.08); }
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border-md);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      display: flex; flex-direction: row;
+      align-items: center; gap: 1.25rem;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      width: 100%;
+      transition: border-color var(--t), box-shadow var(--t);
+      animation: cardIn 1s 0.5s cubic-bezier(0.4,0,0.2,1) both;
+    }
+    @keyframes cardIn { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    .hero-card:hover { border-color: var(--border-hi); box-shadow: 0 28px 80px rgba(0,220,255,0.1); }
 
     /* Circle photo */
     .profile-circle {
-      width: 110px; height: 110px; flex-shrink: 0;
+      width: 100px; height: 100px; flex-shrink: 0;
       border-radius: 50%; overflow: hidden;
-      border: 3px solid var(--border-md);
-      box-shadow: 0 0 0 5px var(--cyan-dim), 0 8px 28px rgba(0,0,0,0.4);
+      border: 3px solid rgba(0,220,255,0.3);
+      box-shadow: 0 0 0 5px rgba(0,220,255,0.08);
       position: relative;
     }
     .profile-circle img {
       width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
-      filter: grayscale(10%) contrast(1.05); display: block;
+      display: block;
     }
     .profile-scan {
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -88,15 +103,15 @@
     }
     @keyframes scanD { 0%{top:0;opacity:.6;} 50%{opacity:.2;} 100%{top:100%;opacity:.6;} }
 
-    /* Info beside photo */
-    .hero-card-info { display: flex; flex-direction: column; gap: 0.4rem; text-align: left; }
-    .hero-card-name { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+    /* Info */
+    .hero-card-info { display: flex; flex-direction: column; gap: 0.35rem; }
+    .hero-card-name { font-size: 1.05rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
     .hero-card-degree { font-size: 0.78rem; color: var(--text-2); line-height: 1.6; }
     .hero-card-status {
       display: inline-flex; align-items: center; gap: 0.45rem;
       font-family: var(--ff-mono); font-size: 0.65rem; color: var(--green);
       background: rgba(0,255,170,0.08); padding: 0.28rem 0.75rem;
-      border-radius: 999px; border: 1px solid rgba(0,255,170,0.2);
+      border-radius: 999px; border: 1px solid rgba(0,255,170,0.25);
       margin-top: 0.35rem; width: fit-content;
     }
     .sdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pb 2s infinite; }
@@ -141,8 +156,9 @@
     @keyframes fadeUp { from{opacity:0;transform:translateX(-50%) translateY(10px);} to{opacity:1;transform:translateX(-50%) translateY(0);} }
 
     @media (max-width:900px) {
-      .hero-grid { grid-template-columns:1fr; gap:3rem; }
-      .hero-right { order:-1; max-width:360px; margin:0 auto; }
+      .hero-inner { grid-template-columns:1fr; gap:2.5rem; }
+      .hero-right { align-items:flex-start; padding-bottom:0; }
+      .hero-card { max-width:340px; }
       .wid-grid { grid-template-columns:1fr; }
       .hero-stats { gap:1.5rem; }
     }
@@ -177,14 +193,14 @@
 
   <!-- HERO -->
   <section class="hero sec">
-    <div class="wrap hero-grid">
+    <div class="wrap hero-inner">
 
-      <!-- LEFT -->
+      <!-- LEFT — big name + content -->
       <div class="hero-left">
         <div class="hero-eyebrow">AI &amp; Data Science · Web · IoT</div>
         <h1 class="hero-name">
           <span class="line"><span>Ajay</span></span>
-          <span class="line"><span class="accent">Kumar<span style="color:var(--cyan)">.</span></span></span>
+          <span class="line"><span>Kumar</span></span>
         </h1>
         <div class="hero-role">
           <span class="hero-role-prefix">$ >&nbsp;</span>
@@ -208,7 +224,7 @@
         </div>
       </div>
 
-      <!-- RIGHT — horizontal card -->
+      <!-- RIGHT — card aligned to bottom of name -->
       <div class="hero-right">
         <div class="hero-card">
           <div class="profile-circle">
@@ -219,7 +235,7 @@
             <div class="hero-card-name">Ajay Kumar</div>
             <div class="hero-card-degree">
               B.Tech – AI &amp; Data Science<br>
-              Focus: AI&ML, Web Dev, IoT.
+              Focus: AI&amp;ML, Web Dev, IoT.
             </div>
             <div class="hero-card-status">
               <div class="sdot"></div>
@@ -302,7 +318,7 @@
       <a href="mailto:ajaykumarjaganathan@gmail.com" class="social-btn" title="Email">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
       </a>
-      <a href="https://linkedin.com/in/ajaykumar-j" target="_blank" class="social-btn" title="LinkedIn">
+      <a href="www.linkedin.com/in/ajaykumar-ai" target="_blank" class="social-btn" title="LinkedIn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
       <a href="https://github.com/ajaykumarjaganathan" target="_blank" class="social-btn" title="GitHub">
@@ -314,7 +330,7 @@
 
 <script src="script.js"></script>
 <script>
-const words = ['AI & ML Engineer','Frontend Developer','IoT Builder','Data Analysist','Problem Solver'];
+const words = ['AI & ML Engineer','Full Stack Developer','IoT Builder','Data Scientist','Problem Solver'];
 let wi=0,ci=0,del=false;
 const tw=document.getElementById('tw');
 function type(){
