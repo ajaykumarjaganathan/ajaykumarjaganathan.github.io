@@ -1,245 +1,204 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>About — Ajay Kumar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .about-hero { padding: 5rem 0 4rem; }
-    .about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: start; max-width: 720px; }
-    .about-bio p { font-size: 1.05rem; color: var(--text-2); line-height: 1.85; margin-bottom: 1.5rem; }
-    .about-bio p strong { color: var(--text); font-weight: 600; }
-    .about-bio p .hl { color: var(--cyan); font-weight: 600; }
+/* ============================================
+   AJAY — PORTFOLIO V2 | DARK TECHY
+   ============================================ */
 
-    .quick-facts {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-lg); padding: 2rem; margin-top: 2.5rem;
-    }
-    .quick-facts-title {
-      font-family: var(--ff-mono); font-size: 0.68rem;
-      color: var(--cyan); letter-spacing: 3px; text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .fact-row {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      padding: 0.85rem 0; border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
-    }
-    .fact-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .fact-key { color: var(--text-3); font-family: var(--ff-mono); font-size: 0.72rem; min-width: 120px; }
-    .fact-val { color: var(--text); text-align: right; }
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
 
-    /* Timeline */
-    .tl-section { padding: 5rem 0; }
-    .tl { position: relative; padding-left: 2rem; border-left: 1px solid var(--border); }
-    .tl-item { position: relative; padding: 0 0 3.5rem 2.5rem; }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-dot {
-      position: absolute; left: -10px; top: 4px;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: var(--bg); border: 2px solid var(--cyan);
-      transition: var(--t);
-    }
-    .tl-dot.now { background: var(--cyan); box-shadow: 0 0 16px var(--cyan-glow); }
-    .tl-item:hover .tl-dot { background: var(--cyan); box-shadow: 0 0 16px var(--cyan-glow); }
-    .tl-date { font-family: var(--ff-mono); font-size: 0.68rem; color: var(--cyan); margin-bottom: 0.5rem; }
-    .tl-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .tl-org { font-family: var(--ff-mono); font-size: 0.7rem; color: var(--text-3); margin-bottom: 0.75rem; }
-    .tl-desc { font-size: 0.875rem; color: var(--text-2); line-height: 1.75; margin-bottom: 1rem; }
-    .tl-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+:root {
+  --bg:        #060a0e;
+  --bg-1:      #0a1018;
+  --bg-2:      #0f1922;
+  --surface:   #131e2b;
+  --surface-2: #192535;
+  --border:    rgba(0,220,255,0.07);
+  --border-md: rgba(0,220,255,0.15);
+  --border-hi: rgba(0,220,255,0.3);
 
-    @media(max-width:900px){
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    }
-  </style>
-</head>
-<body>
-<div class="noise"></div>
-<div id="cur"></div>
-<div id="cur-r"></div>
-<div class="grid-bg"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
+  --cyan:      #00dcff;
+  --cyan-dim:  rgba(0,220,255,0.12);
+  --cyan-glow: rgba(0,220,255,0.35);
+  --green:     #00ffaa;
+  --amber:     #ffb400;
+  --red:       #ff4d6d;
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">AJAY<span>.</span></a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="skills.html" class="nav-link">Skills</a>
-      <a href="projects.html" class="nav-link">Projects</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </div>
-  </div>
-</nav>
+  --text:      #dce8f5;
+  --text-2:    #6e8ca8;
+  --text-3:    #334d63;
 
-<div class="page">
+  --ff-head:  'Outfit', sans-serif;
+  --ff-mono:  'JetBrains Mono', monospace;
 
-  <section class="about-hero sec">
-    <div class="wrap">
-      <div class="sec-label reveal">About Me</div>
-      <h1 class="h1 reveal" style="margin-bottom:4rem;">The person<br>behind the code<span style="color:var(--cyan)">.</span></h1>
+  --r:    5px;
+  --r-lg: 14px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t:    0.28s var(--ease);
+}
 
-      <!-- Profile Card -->
-      <div class="profile-card reveal" style="
-        display:flex; align-items:center; gap:1.25rem;
-        background:var(--surface); border:1px solid var(--border-md);
-        border-radius:var(--r-lg); padding:1.5rem;
-        max-width:420px; margin-bottom:3rem;
-        box-shadow:0 24px 64px rgba(0,0,0,0.5);
-      ">
-        <div style="
-          width:90px; height:90px; flex-shrink:0;
-          border-radius:50%; overflow:hidden;
-          border:3px solid rgba(0,220,255,0.3);
-          box-shadow:0 0 0 5px rgba(0,220,255,0.08);
-        ">
-          <img src="profile.jpg" alt="Ajay Kumar" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
-        </div>
-        <div style="display:flex;flex-direction:column;gap:0.35rem;">
-          <div style="font-size:1.05rem;font-weight:700;color:var(--text);letter-spacing:-0.02em;">Ajay Kumar</div>
-          <div style="font-size:0.78rem;color:var(--text-2);line-height:1.6;">
-            B.Tech – AI &amp; Data Science<br>
-            Focus: AI&amp;ML, Web Dev, IoT.
-          </div>
-          <div style="
-            display:inline-flex;align-items:center;gap:0.45rem;
-            font-family:var(--ff-mono);font-size:0.65rem;color:var(--green);
-            background:rgba(0,255,170,0.08);padding:0.28rem 0.75rem;
-            border-radius:999px;border:1px solid rgba(0,255,170,0.25);
-            margin-top:0.25rem;width:fit-content;
-          ">
-            <div style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pb 2s infinite;"></div>
-            Open to work
-          </div>
-        </div>
-      </div>
+/* RESET */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--ff-head); background: var(--bg); color: var(--text); overflow-x: hidden; cursor: none; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
 
-      <div class="about-grid">
-        <div>
-          <div class="about-bio reveal">
-            <p>I'm <strong>Ajay Kumar</strong>, a B.Tech student in <span class="hl">Artificial Intelligence &amp; Data Science</span> based in Vellore, India. I build things at the intersection of machine learning, web development, and embedded hardware.</p>
-            <p>What drives me is the gap between raw technology and real-world impact. Whether it's a <span class="hl">face recognition attendance system</span> that saves hours of manual work, a <span class="hl">wireless BLE controller</span> that replaces clunky hardware, or an <span class="hl">ML model</span> that helps a telecom company retain customers — I want to build things that actually matter.</p>
-            <p>I care deeply about writing <strong>clean, understandable code</strong> and designing systems that are maintainable. I'm actively looking for <strong>internships and opportunities</strong> where I can contribute and keep learning.</p>
-          </div>
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-md); border-radius: 99px; }
 
-          <div class="quick-facts reveal">
-            <div class="quick-facts-title">Quick Info</div>
-            <div class="fact-row">
-              <span class="fact-key">degree</span>
-              <span class="fact-val">B.Tech — AI & Data Science</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-key">location</span>
-              <span class="fact-val">Vellore, Tamil Nadu, India</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-key">interests</span>
-              <span class="fact-val">ML, Web Dev, IoT, Robotics</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-key">email</span>
-              <span class="fact-val" style="color:var(--cyan)">ajaykumarjaganathan@gmail.com</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-key">status</span>
-              <span class="fact-val" style="color:var(--green)">Open to internships & jobs</span>
-            </div>
-          </div>
+/* CURSOR */
+#cur { width: 10px; height: 10px; background: var(--cyan); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s, background .2s; mix-blend-mode: screen; }
+#cur-r { width: 38px; height: 38px; border: 1px solid rgba(0,220,255,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: left .12s var(--ease), top .12s var(--ease), opacity .2s; }
+body.cursor-hover #cur { width: 6px; height: 6px; }
+body.cursor-hover #cur-r { width: 52px; height: 52px; border-color: var(--cyan); }
 
-          <div style="display:flex;gap:1rem;margin-top:2.5rem;" class="reveal">
-            <a href="contact.html" class="btn btn-solid">Get in Touch</a>
-            <a href="projects.html" class="btn btn-outline">View Projects</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+/* GRID BG */
+.grid-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,220,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,220,255,0.022) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
 
-  <div class="divider"></div>
+/* GLOW ORB */
+.orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(80px); opacity: 0.12; }
+.orb-1 { width: 500px; height: 500px; background: var(--cyan); top: -150px; right: -100px; }
+.orb-2 { width: 400px; height: 400px; background: var(--green); bottom: -100px; left: -80px; }
 
-  <!-- TIMELINE -->
-  <section class="tl-section sec">
-    <div class="wrap">
-      <div class="sec-label reveal">Journey</div>
-      <h2 class="h2 reveal" style="margin-bottom:4rem;">Timeline<span style="color:var(--cyan)">.</span></h2>
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(6,10,14,0.88);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  height: 68px;
+}
+.nav-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 3rem;
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: var(--ff-head); font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; color: var(--text); }
+.nav-logo span { color: var(--cyan); }
+.nav-links { display: flex; gap: 0.15rem; }
+.nav-link {
+  font-family: var(--ff-mono); font-size: 0.72rem;
+  color: var(--text-2); padding: 0.45rem 0.9rem;
+  border-radius: var(--r); border: 1px solid transparent; transition: var(--t);
+}
+.nav-link:hover { color: var(--cyan); background: var(--cyan-dim); border-color: var(--border-md); }
+.nav-link.active { color: var(--cyan); background: var(--cyan-dim); border-color: var(--border-md); }
 
-      <div class="tl">
-        <div class="tl-item reveal">
-          <div class="tl-dot"></div>
-          <div class="tl-date">2022 — Present</div>
-          <div class="tl-title">B.Tech — Artificial Intelligence & Data Science</div>
-          <div class="tl-org">Vellore Institute, India</div>
-          <div class="tl-desc">Studying AI, machine learning, data science, and software engineering. Building real-world projects spanning ML pipelines, web applications, and embedded IoT systems.</div>
-          <div class="tl-tags">
-            <span class="tag-muted">Machine Learning</span>
-            <span class="tag-muted">Data Science</span>
-            <span class="tag-muted">Web Dev</span>
-            <span class="tag-muted">IoT</span>
-          </div>
-        </div>
+/* PAGE WRAPPER */
+.page { position: relative; z-index: 1; padding-top: 68px; }
 
-        <div class="tl-item reveal d1">
-          <div class="tl-dot"></div>
-          <div class="tl-date">2023</div>
-          <div class="tl-title">Hotel Booking System — Web Dev Internship</div>
-          <div class="tl-org">Internship Project</div>
-          <div class="tl-desc">Built a full-stack hotel booking and management platform. Features included room management, booking engine, coupon system, revenue tracking, and payment logs via PHP & MySQL.</div>
-          <div class="tl-tags">
-            <span class="tag-muted">PHP</span>
-            <span class="tag-muted">MySQL</span>
-            <span class="tag-muted">Admin Dashboard</span>
-            <span class="tag-muted">Full Stack</span>
-          </div>
-        </div>
+/* CONTAINER */
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 3rem; }
 
-        <div class="tl-item reveal d2">
-          <div class="tl-dot"></div>
-          <div class="tl-date">2024</div>
-          <div class="tl-title">Telecom Churn Prediction — ML Project</div>
-          <div class="tl-org">Academic / Personal Project</div>
-          <div class="tl-desc">Trained and deployed an XGBoost model to predict telecom customer churn. Built interactive Streamlit app with data preprocessing, feature engineering, and visual analytics dashboard.</div>
-          <div class="tl-tags">
-            <span class="tag-muted">Python</span>
-            <span class="tag-muted">XGBoost</span>
-            <span class="tag-muted">Streamlit</span>
-          </div>
-        </div>
+/* SECTION SPACING */
+.sec { padding: 7rem 0; }
+.sec-sm { padding: 5rem 0; }
 
-        <div class="tl-item reveal d3">
-          <div class="tl-dot now"></div>
-          <div class="tl-date">2024 — Now</div>
-          <div class="tl-title">AI Face Attendance + CtrlX ESP32 Controller</div>
-          <div class="tl-org">Active Projects</div>
-          <div class="tl-desc">Shipped AI-powered face recognition attendance system with Flask & OpenCV. Also built CtrlX — a wireless ESP32 BLE HID controller with 5 input modes, OLED display, and deep sleep firmware.</div>
-          <div class="tl-tags">
-            <span class="tag-muted">Python</span>
-            <span class="tag-muted">OpenCV</span>
-            <span class="tag-muted">Flask</span>
-            <span class="tag-muted">ESP32</span>
-            <span class="tag-muted">BLE</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+/* SECTION LABEL */
+.sec-label {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--ff-mono); font-size: 0.68rem;
+  color: var(--cyan); letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.sec-label::before { content: ''; width: 24px; height: 1px; background: var(--cyan); }
 
-</div>
+/* HEADINGS */
+.h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 900; line-height: 1; letter-spacing: -0.04em; }
+.h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+.h3 { font-size: 1.1rem; font-weight: 700; }
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-logo">AJAY<span>.</span></div>
-    <p class="footer-copy">© <span class="year"></span> Ajay Kumar. All rights reserved.</p>
-    <div class="footer-socials">
-      <a href="mailto:ajaykumarjaganathan@gmail.com" class="social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
-      <a href="https://linkedin.com/in/ajaykumar-j" target="_blank" class="social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
-      <a href="https://github.com/ajaykumarjaganathan" target="_blank" class="social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-    </div>
-  </div>
-</footer>
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--ff-mono); font-size: 0.8rem; font-weight: 500;
+  padding: 0.8rem 1.8rem; border-radius: var(--r);
+  border: none; cursor: pointer; transition: var(--t);
+  position: relative; overflow: hidden;
+}
+.btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.1); transform: translateX(-110%); transition: transform 0.35s var(--ease); }
+.btn:hover::after { transform: translateX(0); }
+.btn-solid { background: var(--cyan); color: var(--bg); }
+.btn-solid:hover { box-shadow: 0 0 28px var(--cyan-glow); }
+.btn-outline { background: transparent; color: var(--cyan); border: 1px solid var(--border-md); }
+.btn-outline:hover { background: var(--cyan-dim); border-color: var(--border-hi); }
 
-<script src="script.js"></script>
-</body>
-</html>
+/* TAGS */
+.tag {
+  font-family: var(--ff-mono); font-size: 0.65rem;
+  color: var(--cyan); background: var(--cyan-dim);
+  padding: 0.2rem 0.65rem; border-radius: 999px;
+  border: 1px solid var(--border-md);
+}
+.tag-muted {
+  font-family: var(--ff-mono); font-size: 0.65rem;
+  color: var(--text-3); background: var(--bg-2);
+  padding: 0.2rem 0.55rem; border-radius: var(--r);
+  border: 1px solid var(--border);
+}
+
+/* CARD */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 2rem;
+  transition: border-color var(--t), transform var(--t), box-shadow var(--t);
+}
+.card:hover { border-color: var(--border-md); box-shadow: 0 12px 48px rgba(0,220,255,0.06); }
+.card-lift:hover { transform: translateY(-4px); }
+
+/* DIVIDER */
+.divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-md), transparent); margin: 0; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; }
+.reveal.d4 { transition-delay: 0.4s; }
+
+/* PROFILE CARD — used in about.html hero */
+.sdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pb 2s infinite; }
+@keyframes pb { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+/* FOOTER */
+.footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relative; z-index: 1; }
+.footer-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 3rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-weight: 900; font-size: 1.2rem; letter-spacing: -0.03em; }
+.footer-logo span { color: var(--cyan); }
+.footer-copy { font-family: var(--ff-mono); font-size: 0.7rem; color: var(--text-3); }
+.footer-socials { display: flex; gap: 0.75rem; }
+.social-btn {
+  width: 38px; height: 38px; border-radius: var(--r);
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-2); transition: var(--t);
+}
+.social-btn:hover { color: var(--cyan); border-color: var(--border-md); background: var(--cyan-dim); }
+
+/* NOISE */
+.noise { position: fixed; inset: 0; z-index: 999; pointer-events: none; opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .wrap { padding: 0 1.5rem; }
+  .nav-inner { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .sec { padding: 5rem 0; }
+  .footer-inner { padding: 0 1.5rem; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 1rem; }
+  .sec { padding: 3.5rem 0; }
+}
