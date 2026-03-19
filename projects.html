@@ -58,9 +58,17 @@
     .proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; }
 
     .proj-card.hidden { display: none; }
-
-    /* Featured project — bigger title */
     .proj-card.featured h3 { font-size: 1.2rem; }
+
+    /* Live site link inside card */
+    .proj-live-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--ff-mono); font-size: 0.68rem;
+      color: var(--cyan); margin-top: 0.25rem;
+      transition: opacity 0.2s;
+    }
+    .proj-live-link:hover { opacity: 0.75; }
+    .proj-live-link svg { flex-shrink: 0; }
 
     @media(max-width:900px){
       .proj-grid{grid-template-columns:1fr;}
@@ -163,6 +171,30 @@
           </div>
         </div>
 
+        <!-- ✅ NEW — Sakura Japanese Academy -->
+        <div class="proj-card reveal d1" data-cat="web">
+          <span class="proj-badge live">Live</span>
+          <div class="proj-top">
+            <div class="proj-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            </div>
+            <div class="proj-actions">
+              <a href="https://sakurajapaneseacademy.com" target="_blank" class="proj-action" title="Live Site">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3>Sakura Japanese Academy</h3>
+          <p>Designed, built, and deployed a full website for a Japanese language learning academy. Managed custom domain via GoDaddy DNS and hosted on Netlify with continuous deployment.</p>
+          <a href="https://sakurajapaneseacademy.com" target="_blank" class="proj-live-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+            sakurajapaneseacademy.com
+          </a>
+          <div class="proj-tags">
+            <span class="tag-muted">HTML5</span><span class="tag-muted">CSS3</span><span class="tag-muted">JavaScript</span><span class="tag-muted">Netlify</span><span class="tag-muted">GoDaddy DNS</span>
+          </div>
+        </div>
+
         <!-- Hotel Booking -->
         <div class="proj-card reveal d1" data-cat="web">
           <div class="proj-top">
@@ -216,7 +248,7 @@
     <p class="footer-copy">© <span class="year"></span> Ajay Kumar. All rights reserved.</p>
     <div class="footer-socials">
       <a href="mailto:ajaykumarjaganathan@gmail.com" class="social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
-      <a href="www.linkedin.com/in/ajaykumar-ai" target="_blank" class="social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
+      <a href="https://www.linkedin.com/in/ajaykumar-ai" target="_blank" class="social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a>
       <a href="https://github.com/ajaykumarjaganathan" target="_blank" class="social-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
     </div>
   </div>
