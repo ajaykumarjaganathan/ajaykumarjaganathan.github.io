@@ -261,17 +261,15 @@
 
 <script src="script.js"></script>
 <script>
-// Animate skill bars when scrolled into view
-const barObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const target = e.target.getAttribute('data-w');
-      e.target.style.width = target;
-      barObs.unobserve(e.target);
-    }
+// Animate skill bars with randomized percentages (70-95%) on load
+document.querySelectorAll('.sbar-fill').forEach(fill => {
+  const pct = Math.floor(Math.random() * (95 - 70 + 1)) + 70; // random 70-95
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      fill.style.width = pct + '%';
+    });
   });
-}, { threshold: 0.2 });
-document.querySelectorAll('.sbar-fill').forEach(b => barObs.observe(b));
+});
 </script>
 </body>
 </html>
