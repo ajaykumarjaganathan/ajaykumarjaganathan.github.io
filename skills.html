@@ -38,9 +38,10 @@
     .sbar-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--cyan), var(--green));
+      background: linear-gradient(90deg, var(--cyan, #00dcff), var(--green, #00ffa3));
       border-radius: 99px;
       transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+      min-width: 2px;
     }
     .domain-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
@@ -262,11 +263,14 @@
 <script src="script.js"></script>
 <script>
 // Animate skill bars with randomized percentages (70-95%) on load
-document.querySelectorAll('.sbar-fill').forEach(fill => {
+const fills = document.querySelectorAll('.sbar-fill');
+console.log('Skill bars found:', fills.length);
+fills.forEach(fill => {
   const pct = Math.floor(Math.random() * (95 - 70 + 1)) + 70; // random 70-95
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       fill.style.width = pct + '%';
+      console.log('Set width to', pct + '%', fill);
     });
   });
 });
