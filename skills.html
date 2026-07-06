@@ -36,14 +36,12 @@
     .sbar-name { font-family: var(--ff-mono); font-size: 0.7rem; color: var(--text-2); min-width: 120px; }
     .sbar-track { flex: 1; height: 4px; background: var(--bg-2); border-radius: 99px; overflow: hidden; }
     .sbar-fill {
-      height: 100%; width: var(--w);
+      height: 100%;
+      width: 0%;
       background: linear-gradient(90deg, var(--cyan), var(--green));
       border-radius: 99px;
-      animation: grow 1.4s cubic-bezier(0.4,0,0.2,1) both;
-      animation-play-state: paused;
+      transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
     }
-    @keyframes grow { from{width:0} to{width:var(--w)} }
-    .sbar-fill.animate { animation-play-state: running; }
     .domain-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
     /* Tools section */
@@ -63,6 +61,18 @@
     }
     .tool-name { font-size: 0.85rem; font-weight: 600; }
     .tool-cat { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--text-3); }
+
+    /* Resume download button */
+    .resume-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--ff-mono); font-size: 0.72rem; font-weight: 700;
+      padding: 0.5rem 1rem;
+      background: var(--cyan); color: var(--bg);
+      border-radius: var(--r);
+      text-decoration: none;
+      transition: opacity var(--t), transform var(--t);
+    }
+    .resume-btn:hover { opacity: 0.85; transform: translateY(-2px); }
 
     @media(max-width:900px){
       .domain-grid{grid-template-columns:1fr;}
@@ -91,7 +101,10 @@
       <a href="projects.html" class="nav-link">Projects</a>
       <a href="contact.html" class="nav-link">Contact</a>
     </div>
-    <div class="nav-badge"><div class="nav-badge-dot"></div>Open to work</div>
+    <a href="resume.pdf" download="Ajay_Kumar_Resume.pdf" class="resume-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Resume
+    </a>
   </div>
 </nav>
 
@@ -119,10 +132,10 @@
             </div>
           </div>
           <div class="skill-bars">
-            <div class="sbar-row"><span class="sbar-name">Python</span><div class="sbar-track"><div class="sbar-fill" style="--w:88%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">ML Modelling</span><div class="sbar-track"><div class="sbar-fill" style="--w:78%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">Data Analysis</span><div class="sbar-track"><div class="sbar-fill" style="--w:82%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">CV</span><div class="sbar-track"><div class="sbar-fill" style="--w:70%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">Python</span><div class="sbar-track"><div class="sbar-fill" data-w="88%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">ML Modelling</span><div class="sbar-track"><div class="sbar-fill" data-w="78%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">Data Analysis</span><div class="sbar-track"><div class="sbar-fill" data-w="82%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">CV</span><div class="sbar-track"><div class="sbar-fill" data-w="70%"></div></div></div>
           </div>
           <div class="domain-tags">
             <span class="tag">XGBoost</span><span class="tag">Scikit-learn</span><span class="tag">OpenCV</span><span class="tag">Flask</span><span class="tag">Streamlit</span><span class="tag">Deep Learning</span>
@@ -140,10 +153,10 @@
             </div>
           </div>
           <div class="skill-bars">
-            <div class="sbar-row"><span class="sbar-name">PHP / MySQL</span><div class="sbar-track"><div class="sbar-fill" style="--w:82%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">HTML / CSS</span><div class="sbar-track"><div class="sbar-fill" style="--w:88%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">JavaScript</span><div class="sbar-track"><div class="sbar-fill" style="--w:75%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">Full Stack</span><div class="sbar-track"><div class="sbar-fill" style="--w:72%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">PHP / MySQL</span><div class="sbar-track"><div class="sbar-fill" data-w="82%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">HTML / CSS</span><div class="sbar-track"><div class="sbar-fill" data-w="88%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">JavaScript</span><div class="sbar-track"><div class="sbar-fill" data-w="75%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">Full Stack</span><div class="sbar-track"><div class="sbar-fill" data-w="72%"></div></div></div>
           </div>
           <div class="domain-tags">
             <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span><span class="tag">Admin Panels</span><span class="tag"></span>
@@ -161,10 +174,10 @@
             </div>
           </div>
           <div class="skill-bars">
-            <div class="sbar-row"><span class="sbar-name">ESP32</span><div class="sbar-track"><div class="sbar-fill" style="--w:72%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">Raspberry Pi</span><div class="sbar-track"><div class="sbar-fill" style="--w:68%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">BLE / HID</span><div class="sbar-track"><div class="sbar-fill" style="--w:65%"></div></div></div>
-            <div class="sbar-row"><span class="sbar-name">Arduino / C++</span><div class="sbar-track"><div class="sbar-fill" style="--w:70%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">ESP32</span><div class="sbar-track"><div class="sbar-fill" data-w="72%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">Raspberry Pi</span><div class="sbar-track"><div class="sbar-fill" data-w="68%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">BLE / HID</span><div class="sbar-track"><div class="sbar-fill" data-w="65%"></div></div></div>
+            <div class="sbar-row"><span class="sbar-name">Arduino / C++</span><div class="sbar-track"><div class="sbar-fill" data-w="70%"></div></div></div>
           </div>
           <div class="domain-tags">
             <span class="tag">ESP32</span><span class="tag">Raspberry Pi</span><span class="tag">BLE 4.2</span><span class="tag">Arduino/C++</span><span class="tag">SSD1306 OLED</span>
@@ -178,46 +191,32 @@
             </div>
             <div>
              <h3>Data Analyst</h3>
-<div class="sub">Python · SQL · Visualization · Statistics</div>
-</div>
-</div>
+             <div class="sub">Python · SQL · Visualization · Statistics</div>
+            </div>
+          </div>
 
-<div class="skill-bars">
-  <div class="sbar-row">
-    <span class="sbar-name">SQL / Data Querying</span>
-    <div class="sbar-track">
-      <div class="sbar-fill" style="--w:85%"></div>
-    </div>
-  </div>
-
-  <div class="sbar-row">
-    <span class="sbar-name">Python (Pandas, NumPy)</span>
-    <div class="sbar-track">
-      <div class="sbar-fill" style="--w:80%"></div>
-    </div>
-  </div>
-
-  <div class="sbar-row">
-    <span class="sbar-name">Data Visualization (Power BI / Tableau)</span>
-    <div class="sbar-track">
-      <div class="sbar-fill" style="--w:75%"></div>
-    </div>
-  </div>
-
-  <div class="sbar-row">
-    <span class="sbar-name">Statistics & EDA</span>
-    <div class="sbar-track">
-      <div class="sbar-fill" style="--w:70%"></div>
-    </div>
-  </div>
-
-  <div class="sbar-row">
-    <span class="sbar-name">Excel / Data Cleaning</span>
-    <div class="sbar-track">
-      <div class="sbar-fill" style="--w:78%"></div>
-    </div>
-  </div>
-</div>
+          <div class="skill-bars">
+            <div class="sbar-row">
+              <span class="sbar-name">SQL / Data Querying</span>
+              <div class="sbar-track"><div class="sbar-fill" data-w="85%"></div></div>
+            </div>
+            <div class="sbar-row">
+              <span class="sbar-name">Python (Pandas, NumPy)</span>
+              <div class="sbar-track"><div class="sbar-fill" data-w="80%"></div></div>
+            </div>
+            <div class="sbar-row">
+              <span class="sbar-name">Data Visualization (Power BI / Tableau)</span>
+              <div class="sbar-track"><div class="sbar-fill" data-w="75%"></div></div>
+            </div>
+            <div class="sbar-row">
+              <span class="sbar-name">Statistics & EDA</span>
+              <div class="sbar-track"><div class="sbar-fill" data-w="70%"></div></div>
+            </div>
+            <div class="sbar-row">
+              <span class="sbar-name">Excel / Data Cleaning</span>
+              <div class="sbar-track"><div class="sbar-fill" data-w="78%"></div></div>
+            </div>
+          </div>
           <div class="domain-tags">
             <span class="tag">SQL</span><span class="tag">ETL</span><span class="tag">OLAP</span><span class="tag">Data Warehouse</span><span class="tag">Pipelines</span>
           </div>
@@ -262,9 +261,16 @@
 
 <script src="script.js"></script>
 <script>
+// Animate skill bars when scrolled into view
 const barObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('animate'); barObs.unobserve(e.target); } });
-},{threshold:0.2});
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const target = e.target.getAttribute('data-w');
+      e.target.style.width = target;
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
 document.querySelectorAll('.sbar-fill').forEach(b => barObs.observe(b));
 </script>
 </body>
